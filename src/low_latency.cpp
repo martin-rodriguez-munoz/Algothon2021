@@ -1,30 +1,27 @@
 #include <iostream>
 #include <vector>
+#include <string>
+#include <sstream>
 using namespace std;
 int main()
 {
-    double previ;
-
-    string s;
-    //cin >> s;
-    char c;
-    
-    while ((cin >> c) and c != ',');
-    cin >> previ;
-    
-    if (previ > 0) cout << 1 << endl;
-    else cout << 0 << endl;
-    
-    double d;
-    while (cin >> c)
+    string str;
+    while (cin >> str)
     {
-        while ((cin >> c) and c != ',');
-        cin >> d;
-        
-        //cout << "previ " << previ << " d " << d << endl;
-        if (d > previ) cout << 1 << endl;
-        else cout << 0 << endl;
-        previ = d;
+        for (char &c : str)
+        {
+            if (c == ',') c = ' ';
+        }
+        double a, b, temp;
+        a = 0;
+        stringstream ss(str);
+        while (ss >> temp)
+        {
+            a = b;
+            b = temp;
+        }
+        if (a < b) cout << 0 << endl;
+        else cout << 1 << endl;
     }
     
     
